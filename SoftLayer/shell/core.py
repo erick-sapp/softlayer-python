@@ -75,12 +75,16 @@ def cli(ctx, env):
                           prog_name="",
                           reraise_exceptions=True)
             except SystemExit as ex:
+                print("SystemExit reached.")             
                 env.vars['last_exit_code'] = ex.code
             except EOFError:
+                print("EOFError reached.")
                 return
             except ShellExit:
+                print("ShellExit reached.")
                 return
             except Exception as ex:
+                print("Exception reached.")
                 env.vars['last_exit_code'] = 1
                 traceback.print_exc(file=sys.stderr)
 
